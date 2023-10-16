@@ -1,0 +1,38 @@
+{
+  "name": "volley-champ-api",
+  "version": "1.0.0",
+  "description": "volley-champ-api",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonatassborges/volley-champ-api.git"
+  },
+  "keywords": [
+    "api",
+    "node",
+    "javascrit",
+    "mysql",
+    "express",
+    "mvc",
+    "promisses"
+  ],
+  "author": "Jonatas Borges",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonatassborges/volley-champ-api/issues"
+  },
+  "homepage": "https://github.com/jonatassborges/volley-champ-api#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.2"
+  }
+}
