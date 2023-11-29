@@ -17,7 +17,8 @@ CREATE TABLE `users` (
   `pass` varchar(256) NOT NULL,
   `photo` varchar(700) NOT NULL,
   `access` varchar(265) NOT NULL,
-  `nickname` varchar(265) NOT NULL
+  `nickname` varchar(265) NOT NULL,
+  `sex` varchar(1) NOT NULL,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `subscribe` (
@@ -74,6 +75,6 @@ INSERT INTO `subscribe` (`id`, `subscribe_champs`, `subscribe_user`, `subscribe_
 
 
 INSERT INTO `users` (`id`, `name`, `email`, `pass`, `photo`, `access`, `nickname`) VALUES
-(2, 'Jonatas', 'jo@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'jojo'),
-(3, 'kaue', 'kaue@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'kaka'),
-(4, 'raissa', 'raissa@gmail.com', '123', 'https://i.pinimg.com/564x/1d/71/4f/1d714fe2ec1848e592a0993121298f6c.jpg', 'adm', 'raissa');
+(2, 'Jonatas', 'jo@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'jojo', 'M'),
+(3, 'kaue', 'kaue@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'kaka', 'M'),
+(4, 'raissa', 'raissa@gmail.com', '123', 'https://i.pinimg.com/564x/1d/71/4f/1d714fe2ec1848e592a0993121298f6c.jpg','adm', 'raissa', 'F');
