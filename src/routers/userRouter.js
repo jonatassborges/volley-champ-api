@@ -1,8 +1,12 @@
 import express from 'express'
 import createUser from '../controllers/users/createUser.js'
+import listUsers from '../controllers/users/listUsers.js'
+import deleteUser from '../controllers/users/deleteUser.js'
 const router = express.Router()
 
+router.get('/list', listUsers)
 router.post('/', createUser)
+router.delete('/', deleteUser)
 
 
 

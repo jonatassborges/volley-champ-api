@@ -18,14 +18,16 @@ CREATE TABLE `users` (
   `photo` varchar(700) NOT NULL,
   `access` varchar(265) NOT NULL,
   `nickname` varchar(265) NOT NULL,
-  `sex` varchar(1) NOT NULL,
+  `sex` varchar(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 CREATE TABLE `subscribe` (
   `id` int(11) NOT NULL,
   `subscribe_champs` int(11) NOT NULL,
   `subscribe_user` int(11) NOT NULL,
-  `subscribe_duo` int(11) NOT NULL
+  `subscribe_duo` int(11) NOT NULL,
+  `category` varchar(1) NOT NULL
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 ALTER TABLE `champs`
@@ -64,17 +66,17 @@ ALTER TABLE `subscribe`
   ADD CONSTRAINT `subscribe_id_users` FOREIGN KEY (`subscribe_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
+INSERT INTO `users` (`id`, `name`, `email`, `pass`, `photo`, `access`, `nickname`, `sex`) VALUES
+(2, 'Jonatas', 'jo@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'jojo', 'M'),
+(3, 'kaue', 'kaue@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'kaka', 'M'),
+(4, 'raissa', 'raissa@gmail.com', '123', 'https://i.pinimg.com/564x/1d/71/4f/1d714fe2ec1848e592a0993121298f6c.jpg','adm', 'raissa', 'F');
 
 
 INSERT INTO `champs` (`id`, `id_user`, `name`, `date`, `info`, `local`) VALUES
 (2, 4, 'champ da raissa', '2023-10-15', 'dada dadadada dadada da dadadada  ', 'IFSP');
 
 
-INSERT INTO `subscribe` (`id`, `subscribe_champs`, `subscribe_user`, `subscribe_duo`) VALUES
+INSERT INTO `subscribe` (`id`, `category`, `subscribe_champs`, `subscribe_user`, `subscribe_duo`) VALUES
 (1, 2, 2, 3);
 
 
-INSERT INTO `users` (`id`, `name`, `email`, `pass`, `photo`, `access`, `nickname`) VALUES
-(2, 'Jonatas', 'jo@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'jojo', 'M'),
-(3, 'kaue', 'kaue@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'kaka', 'M'),
-(4, 'raissa', 'raissa@gmail.com', '123', 'https://i.pinimg.com/564x/1d/71/4f/1d714fe2ec1848e592a0993121298f6c.jpg','adm', 'raissa', 'F');
