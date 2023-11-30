@@ -40,8 +40,7 @@ CREATE TABLE `champs` (
 -- Extraindo dados da tabela `champs`
 --
 
-INSERT INTO `champs` (`id`, `id_user`, `name`, `date`, `info`, `local`) VALUES
-(2, 4, 'champ da raissa', '2023-10-15', 'dada dadadada dadada da dadadada  ', 'IFSP');
+
 
 -- --------------------------------------------------------
 
@@ -61,8 +60,7 @@ CREATE TABLE `subscribe` (
 -- Extraindo dados da tabela `subscribe`
 --
 
-INSERT INTO `subscribe` (`id`, `category`, `subscribe_champs`, `subscribe_user`, `subscribe_duo`) VALUES
-(1, '', 2, 2, 3);
+
 
 -- --------------------------------------------------------
 
@@ -85,11 +83,7 @@ CREATE TABLE `users` (
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `pass`, `photo`, `access`, `nickname`, `sex`) VALUES
-(2, 'Jonatas', 'jo@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'jojo', 'M'),
-(3, 'kaue', 'kaue@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'kaka', 'M'),
-(4, 'raissa', 'raissa@gmail.com', '123', 'https://i.pinimg.com/564x/1d/71/4f/1d714fe2ec1848e592a0993121298f6c.jpg', 'adm', 'raissa', 'F'),
-(6, 'macaco', 'exemplo@email.com', '$2b$10$tEh28hq0cV3OQNaFmO/TBO7QqWjb/4NgPRwkEQrQjwLNFGtPu/8KG', 'link_para_a_foto.jpg', 'adm', 'apelido', 'M');
+
 
 --
 -- Índices para tabelas despejadas
@@ -161,3 +155,20 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+INSERT INTO `users` (`id`, `name`, `email`, `pass`, `photo`, `access`, `nickname`, `sex`) VALUES
+(2, 'Jonatas', 'jo@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'jojo', 'M'),
+(3, 'kaue', 'kaue@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'kaka', 'M'),
+(4, 'raissa', 'raissa@gmail.com', '123', 'https://i.pinimg.com/564x/1d/71/4f/1d714fe2ec1848e592a0993121298f6c.jpg', 'adm', 'raissa', 'F'),
+(6, 'macaco', 'exemplo@email.com', '$2b$10$tEh28hq0cV3OQNaFmO/TBO7QqWjb/4NgPRwkEQrQjwLNFGtPu/8KG', 'link_para_a_foto.jpg', 'adm', 'apelido', 'M');
+
+
+
+INSERT INTO `champs` (`id`, `id_user`, `name`, `date`, `info`, `local`) VALUES
+(2, 4, 'champ da raissa', '2023-10-15', 'dada dadadada dadada da dadadada  ', 'IFSP');
+
+
+INSERT INTO `subscribe` (`id`, `category`, `subscribe_champs`, `subscribe_user`, `subscribe_duo`) VALUES
+(1, '', 2, 2, 3);
