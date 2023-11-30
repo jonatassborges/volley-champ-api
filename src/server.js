@@ -1,10 +1,12 @@
 //const express = require('express')
 import express from 'express'
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import { PORT } from './config.js'
 
 import userRouter from './routers/userRouter.js'
+import authRouter from './routers/authRouter.js'
 
 const api = express()
 
@@ -12,8 +14,10 @@ const api = express()
 //no req.body
 api.use(cors())
 api.use(bodyParser.json())
+api.use(cookieParser())
 
 api.use('/user', userRouter)
+api.use('/auth', authRouter)
 
 
 api.listen(PORT, () => {

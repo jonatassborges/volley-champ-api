@@ -2,11 +2,16 @@ import express from 'express'
 import createUser from '../controllers/users/createUser.js'
 import listUsers from '../controllers/users/listUsers.js'
 import deleteUser from '../controllers/users/deleteUser.js'
+import updateUser from '../controllers/users/updateUser.js'
+import getUser from '../controllers/users/getUser.js'
+import auth from '../middlewares/auth.js'
 const router = express.Router()
 
 router.get('/list', listUsers)
+router.get('/', getUser)
 router.post('/', createUser)
-router.delete('/', deleteUser)
+router.delete('/', auth, deleteUser)
+router.put('/', auth, updateUser)
 
 
 

@@ -5,16 +5,20 @@ const insert = async (user) => {
     return await db.query('insert into users (name, email, pass, photo, access, nickname,sex) values (?,?,?,?,?,?,?)',[name, email, pass, photo, access, nickname, sex])
 }
 
-const getByNickname = async (email) => {
-    return await db.query("SELECT * FROM users Where nickname = ?;", [nickname])
+const getByNickname = async (nickname) => {
+    return await db.query("select id, name, email, photo, access, nickname,sex from users where nickname = ?", [nickname])
+}
+
+const getByEmail = async (email) => {
+    return await db.query("select id, name, email, pass, photo, access, nickname,sex from users where email = ?", [email])
 }
 
 const getAll = async (id) => {
-    return await db.query('select  name, email, pass, photo, access, nickname,sex from users', [id])
+    return await db.query('select id, name, email, photo, access, nickname,sex from users', [id])
 }
 
 const getById = async (id) => {
-    return await db.query('select name, email, pass, photo, access, nickname,sex from users where id = ?', [id])
+    return await db.query('select id, name, email, photo, access, nickname,sex from users where id = ?', [id])
 }
 
 const update = async (user) => {
@@ -26,4 +30,4 @@ const remove = async (id) => {
     return await db.query('delete from users where id = ?', [id])
 }
 
-export default {insert, getByNickname, getAll, getById, update, remove}
+export default {insert, getByNickname, getByEmail, getAll, getByNickname: getById, update, remove}
