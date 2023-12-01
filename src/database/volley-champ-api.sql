@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Nov-2023 às 20:13
+-- Tempo de geração: 01-Dez-2023 às 19:28
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.0.13
 
@@ -40,7 +40,20 @@ CREATE TABLE `champs` (
 -- Extraindo dados da tabela `champs`
 --
 
+INSERT INTO `champs` (`id`, `id_user`, `name`, `date`, `info`, `local`) VALUES
+(2, 4, 'champ da raissa', '2023-10-15', 'dada dadadada dadada da dadadada  ', 'IFSP');
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `token` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -60,7 +73,8 @@ CREATE TABLE `subscribe` (
 -- Extraindo dados da tabela `subscribe`
 --
 
-
+INSERT INTO `subscribe` (`id`, `category`, `subscribe_champs`, `subscribe_user`, `subscribe_duo`) VALUES
+(1, '', 2, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -83,7 +97,12 @@ CREATE TABLE `users` (
 -- Extraindo dados da tabela `users`
 --
 
-
+INSERT INTO `users` (`id`, `name`, `email`, `pass`, `photo`, `access`, `nickname`, `sex`) VALUES
+(2, 'Jonatas', 'jo@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'jojo', 'M'),
+(3, 'kaue', 'kaue@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'kaka', 'M'),
+(4, 'raissa', 'raissa@gmail.com', '123', 'https://i.pinimg.com/564x/1d/71/4f/1d714fe2ec1848e592a0993121298f6c.jpg', 'adm', 'raissa', 'F'),
+(6, 'macaco', 'exemplo@email.com', '$2b$10$tEh28hq0cV3OQNaFmO/TBO7QqWjb/4NgPRwkEQrQjwLNFGtPu/8KG', 'link_para_a_foto.jpg', 'adm', 'apelido', 'M'),
+(10, 'renan', 'renan@gmail.com', '$2b$10$z2StfcgA4zirxaGxH5pnH.2VAEpMEq//fZoZjUeyS9kETjN7V.O9y', 'jnfnfn', 'adm', 'renan', 'M');
 
 --
 -- Índices para tabelas despejadas
@@ -95,6 +114,14 @@ CREATE TABLE `users` (
 ALTER TABLE `champs`
   ADD PRIMARY KEY (`id`),
   ADD KEY `champ_users` (`id_user`);
+
+--
+-- Índices para tabela `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `index_token` (`token`) USING BTREE,
+  ADD KEY `id_user_user_id` (`id_user`);
 
 --
 -- Índices para tabela `subscribe`
@@ -109,7 +136,8 @@ ALTER TABLE `subscribe`
 -- Índices para tabela `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT de tabelas despejadas
@@ -122,6 +150,12 @@ ALTER TABLE `champs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de tabela `sessions`
+--
+ALTER TABLE `sessions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT de tabela `subscribe`
 --
 ALTER TABLE `subscribe`
@@ -131,7 +165,7 @@ ALTER TABLE `subscribe`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
@@ -142,6 +176,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `champs`
   ADD CONSTRAINT `champ_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `sessions`
+--
+ALTER TABLE `sessions`
+  ADD CONSTRAINT `id_user_user_id` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `subscribe`
@@ -155,20 +195,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-
-
-
-INSERT INTO `users` (`id`, `name`, `email`, `pass`, `photo`, `access`, `nickname`, `sex`) VALUES
-(2, 'Jonatas', 'jo@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'jojo', 'M'),
-(3, 'kaue', 'kaue@gmail.com', '123', 'https://avatars.githubusercontent.com/u/139708582?v=4', 'player', 'kaka', 'M'),
-(4, 'raissa', 'raissa@gmail.com', '123', 'https://i.pinimg.com/564x/1d/71/4f/1d714fe2ec1848e592a0993121298f6c.jpg', 'adm', 'raissa', 'F'),
-(6, 'macaco', 'exemplo@email.com', '$2b$10$tEh28hq0cV3OQNaFmO/TBO7QqWjb/4NgPRwkEQrQjwLNFGtPu/8KG', 'link_para_a_foto.jpg', 'adm', 'apelido', 'M');
-
-
-
-INSERT INTO `champs` (`id`, `id_user`, `name`, `date`, `info`, `local`) VALUES
-(2, 4, 'champ da raissa', '2023-10-15', 'dada dadadada dadada da dadadada  ', 'IFSP');
-
-
-INSERT INTO `subscribe` (`id`, `category`, `subscribe_champs`, `subscribe_user`, `subscribe_duo`) VALUES
-(1, '', 2, 2, 3);
