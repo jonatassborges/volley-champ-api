@@ -7,7 +7,6 @@ import { TOKEN_SECRET } from "../../config.js";
 const login = async (req, res) => {
   try {
     const userData = req.body;
-    console.log(userData);
     const [rows] = await user.getByEmail(userData.email);
     if (rows.length === 0) {
       return res.status(400).json({
@@ -18,7 +17,6 @@ const login = async (req, res) => {
     let passIsValid = false;
     try {
       passIsValid = await compare(userData.pass, userFound.pass);
-      console.log(passIsValid);
     } catch (error) {
       return res.status(400).json({
         error: `Usuário ou senha inválidos! 2`,
@@ -34,11 +32,11 @@ const login = async (req, res) => {
       {
         id: userFound.id,
         name: userFound.name,
+        access: userFound.access
       },
       TOKEN_SECRET
     );
     //Criar uma sessão associada ao usuário no banco de dados usando o token gerado
-    console.log(userFound, token);
     await session.create(userFound.id, token);
     // 3.Configurar um cookie chamado "token" no navegador do cliente
     res.cookie("token", token, {
