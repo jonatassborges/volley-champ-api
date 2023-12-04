@@ -22,8 +22,8 @@ const getById = async (id) => {
 }
 
 const update = async (user) => {
-    const {name, email, pass, photo, access, nickname, sex} = user
-    return await db.query('update users SET name = ?, email = ?, pass = ?, photo = ?, access = ?, nickname = ?, sex = ?',[name, email, pass, photo, access, nickname, sex])
+    const {name, email, pass, photo, access, nickname, sex, id} = user
+    return await db.query('update users SET name = ?, email = ?, pass = ?, photo = ?, access = ?, nickname = ?, sex = ? where id = ?',[name, email, pass, photo, access, nickname, sex, id])
 }
 
 const remove = async (id) => {
