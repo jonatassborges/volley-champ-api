@@ -30,4 +30,4 @@ const remove = async (id) => {
     return await db.query('delete from users where id = ?', [id])
 }
 
-export default {insert, getByNickname, getByEmail, getAll, getByNickname: getById, update, remove}
+export default {insert, getByNickname, getByEmail, getAll, getByNickname, getById, update, remove}

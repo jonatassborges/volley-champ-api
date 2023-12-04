@@ -12,7 +12,7 @@ const loginToken = async (req, res) => {
     }
     //verifica se o token é verdadeiro
     const userToken = jwt.verify(token, TOKEN_SECRET);
-    console.log(userToken);
+    console.log(userToken + "dadadada");
     //we (server) CAN USE this usurToken.id and .name
     const [rows] = await user.getById(userToken.id);
     if (rows.length === 0) {
