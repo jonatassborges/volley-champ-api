@@ -15,7 +15,7 @@ const getById = async (id) => {
 
 const update = async (champ) => {
     const {name, date, info, local} = champ
-    return await db.query('update champs SET id = ?, name = ?, date = ?, info = ?, local = ?',[id, name, date, info, local])
+    return await db.query('update champs SET id = ?, name = ?, date = ?, info = ?, local = ? where id = ?',[id, name, date, info, local])
 }
 
 const remove = async (id) => {
