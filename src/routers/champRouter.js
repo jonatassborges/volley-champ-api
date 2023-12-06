@@ -11,7 +11,7 @@ const router = express.Router()
 router.get('/list', listChamps)
 router.post('/', auth, createChamp)
 router.put('/', auth, updateChamp)
-router.delete('/', auth, deleteChamp)
+router.delete('/:champId', auth, deleteChamp)
 router.get('/name', getChampByName)
 router.get('/:champId', getChamp)
 

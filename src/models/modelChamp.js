@@ -10,7 +10,7 @@ const getAll = async (id) => {
 }
 
 const getById = async (id) => {
-    return await db.query('select id, name, date, info, local from champs where id = ?', [id])
+    return await db.query('select id, name, date, info, local, id_user from champs where id = ?', [id])
 }
 
 const getByName = async (name) => {
@@ -19,7 +19,7 @@ const getByName = async (name) => {
 
 const update = async (userId,champ) => {
     const {name, date, info, local} = champ
-    return await db.query('update champs SET id_user = ?, name = ?, date = ?, info = ?, local = ? where id_user = ?',[userId, name, date, info, local, userId])
+    return await db.query('update champs SET id_user = ?, name = ?, date = ?, info = ?, local = ? where id_user = ? and id = ?',[userId, name, date, info, local, userId, champ.id])
 }
 
 const remove = async (id) => {
