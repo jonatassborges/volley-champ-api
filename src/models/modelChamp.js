@@ -13,6 +13,10 @@ const getById = async (id) => {
     return await db.query('select id, name, date, info, local from champs where id = ?', [id])
 }
 
+const getByName = async (name) => {
+    return await db.query('select id, name, date, info, local from champs where name = ?', [name])
+}
+
 const update = async (userId,champ) => {
     const {name, date, info, local} = champ
     return await db.query('update champs SET id_user = ?, name = ?, date = ?, info = ?, local = ? where id_user = ?',[userId, name, date, info, local, userId])
@@ -22,4 +26,4 @@ const remove = async (id) => {
     return await db.query('delete from champs where id = ?', [id])
 }
 
-export default {insert, getAll, getById, update, remove}
+export default {insert, getAll, getById, getByName, update, remove}
