@@ -8,6 +8,7 @@ import { PORT } from './config.js'
 import userRouter from './routers/userRouter.js'
 import authRouter from './routers/authRouter.js'
 import champRouter from './routers/champRouter.js'
+import subscribeRouter from './routers/subscribeRouter.js'
 
 const api = express()
 
@@ -20,6 +21,7 @@ api.use(cookieParser())
 api.use('/user', userRouter)
 api.use('/auth', authRouter)
 api.use('/champ', champRouter)
+api.use('/subscribe', subscribeRouter)
 
 
 api.listen(PORT, () => {
