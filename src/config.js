@@ -1,6 +1,10 @@
-export const PORT = 3001
-export const DB_HOST = "localhost"
-export const DB_USER = "root"
-export const DB_PASS = ""
-export const DB_NAME = "volley-champ-api"
-export const TOKEN_SECRET = 'SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c'
+import 'dotenv/config'
+
+export const PORT = process.env.PORT
+
+export const DB_HOST = process.env.DB_HOST
+export const DB_USER = process.env.DB_USER
+export const DB_PASS = process.env.DB_PASS
+export const DB_NAME = process.env.DB_NAME
+
+export const TOKEN_SECRET = process.env.TOKEN_SECRET
