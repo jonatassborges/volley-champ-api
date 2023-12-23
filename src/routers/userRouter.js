@@ -16,7 +16,7 @@ router.get('/list', listUsers)
 router.get('/', getUser)
 router.post('/',upload.single("photo"), createUser)
 router.delete('/', auth, deleteUser)
-router.put('/', auth, updateUser)
+router.put('/', auth, upload.single("photo"), updateUser)
 
 
 
