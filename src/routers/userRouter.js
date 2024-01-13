@@ -10,7 +10,8 @@ import multer from "multer";
 
 const router = express.Router()
 const upload = multer({ dest: 'uploads/' });
-
+// upload is being passed like a middleware to the route, so it will be executed before the route handler.
+// but it's keep going to "createUser" and ends there, that's why the 'uploads' folder is insinde the 'controllers/users' folder.
 
 router.get('/list', listUsers)
 router.get('/', getUser)
