@@ -10,7 +10,7 @@ const deleteChamp = async (req, res) => {
     } else {
       if (rows[0].id_user !== userId) {
         return res.status(400).json({
-          error: "Apenas o dono do campeonato pode deletá-lo",
+          error: "Apenas o dono do campeonato pode deletá-lo!",
         });
       }
       const [result] = await champ.remove(champId);

@@ -4,7 +4,7 @@ const listChamps = async (req, res, next) => {
     const [rows, fields] = await champ.getAll();
 
     if (rows.length === 0) {
-      res.status(404).json({ err: `none user found` });
+      res.status(404).json({ err: `none champ found` });
     } else {
       res.json({
         success: "champs successfully found",
